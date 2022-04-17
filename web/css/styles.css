@@ -19,7 +19,7 @@
     --color-secondary-text: #b0b0b0;
     --color-border: #7c7c7c;
     --color-red-danger: #ff2525;
-    --color-green: #2af598 ;
+    --color-green: #2af598;
 }
 
 /** 
@@ -39,6 +39,7 @@ body {
     display: flex;
     align-items: center;
     padding: 0.25rem;
+    gap: 0.5rem;
 }
 
 .logo .a1 {
@@ -49,11 +50,11 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
-
-    font-weight: var(--font-weight-black);
+    letter-spacing: 0.1rem;
+    font-weight: var(--font-weight-bold);
 }
 
 .logo .finance {
-    font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-light);
     color: var(--color-primary-text);
 }
