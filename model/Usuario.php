@@ -62,13 +62,12 @@ class Usuario
     $this->foto = $foto;      
   }
 
-  //falta agregar dato date
-  public function getFechaNacimiento()
+  public function getFechaNacimiento():DateTime
   {
     return $this->fechaNacimiento;
   }
 
-  public function setFechaNacimiento($fechaNacimiento){
+  public function setFechaNacimiento(DateTime $fechaNacimiento){
     $this->fechaNacimiento = $fechaNacimiento;      
   }
 
@@ -108,4 +107,3 @@ class Usuario
     $this->id_tipoUsuario = $id_tipoUsuario;      
   }
 }
-?>
