@@ -1,0 +1,39 @@
+.dashboard-icon,
+.profile-icon,
+.settings-icon {
+    display: flex;
+    align-items: center;
+}
+
+.dashboard-icon::before,
+.profile-icon::before,
+.settings-icon::before {
+    content: '';
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+    background-color: var(--color-white);
+}
+
+.dashboard-icon::before {
+    mask: var(--asset-dashboard-icon) no-repeat 50% 50%;
+    -webkit-mask: var(--asset-dashboard-icon) no-repeat 50% 50%;
+}
+
+.profile-icon::before {
+    mask: var(--asset-profile-icon) no-repeat 50% 50%;
+    -webkit-mask: var(--asset-profile-icon) no-repeat 50% 50%;
+}
+
+.settings-icon::before {
+    mask: var(--asset-settings-icon) no-repeat 50% 50%;
+    -webkit-mask: var(--asset-settings-icon) no-repeat 50% 50%;
+}
+
+.settings-icon::before,
+.dashboard-icon::before,
+.profile-icon::before {
+    margin-right: 0.5rem;
+}
