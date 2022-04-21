@@ -23,12 +23,15 @@ if (!$_SESSION['validate']) {
     <main class="container-fluid main">
         <div class="row">
             <!-- LEFT MENU -->
-            <div class="col-2 menu">
-                <?php
-                include 'modules/logo.php'
-                ?>
-                <div class="border-gradient"></div>
-            </div>
+            <!-- DESKTOP -->
+            <?php
+            include 'modules/desktop-menu.php'
+            ?>
+
+            <!-- MOBILE MENU -->
+            <?php
+            include 'modules/mobile-menu.php'
+            ?>
 
             <!-- MAIN CONTENT HERE -->
             <div class="col-8 border-both main-content">
@@ -38,6 +41,7 @@ if (!$_SESSION['validate']) {
             <!-- LEFT SECTION -->
             <div class="col-2 left-section"></div>
         </div>
+
     </main>
 </body>
 
