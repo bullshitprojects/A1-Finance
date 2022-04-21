@@ -92,7 +92,7 @@ CREATE TABLE `usuario` (
   `foto` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `fechaNacimiento` date NOT NULL,
   `telefono` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `correo` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `correo` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci UNIQUE NOT NULL,
   `id_tipoUsuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

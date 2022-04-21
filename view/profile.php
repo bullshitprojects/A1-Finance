@@ -12,47 +12,65 @@
 </head>
 
 <body>
-    <div class="container-fluid main">
-        <div class="col-8 border-both main-content px-5 py-5 d-flex justify-content-center">
-            <h3 style="color:white">Perfil</h3>
-            <div class="mt-5" style="width: 700px;">
-                <form class="row g-3">
-                    <div class="col-12">
-                        <div class="profile-pic-div">
-                            <img src="web/images/perfil.png" id="photo">
-                            <input type="file" id="file">X
-                            <label for="file" id="uploadBtn">Elegir foto</label>
+    <main class="container-fluid main">
+        <div class="row">
+            <!-- LEFT MENU -->
+            <!-- DESKTOP -->
+            <?php
+            include 'modules/desktop-menu.php'
+            ?>
+
+            <!-- MOBILE MENU -->
+            <?php
+            include 'modules/mobile-menu.php'
+            ?>
+            <!-- CONTENIDO DEL CENTRO -->
+            <div class="col-8 border-both main-content px-5 py-5 d-flex justify-content-center">
+                <h3 style="color:white">Perfil</h3>
+                <div class="mt-5" style="width: 700px;">
+                    <form class="row g-3">
+                        <div class="col-12 div-pic-parent ">
+                            <div class="profile-pic-div ">
+                                <img src="web/images/perfil.png" id="photo">
+                                <input type="file" id="file">X
+                                <label for="file" id="uploadBtn">Elegir foto</label>
+                            </div>
                         </div>
-                    </div>
-                    <br><br><br><br><br><br><br>
-                    <div class="col-md-6">
-                        <label class="form-label">Nombres</label>
-                        <input type="text" class="form-control" id="inputName">
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label">DUI</label>
-                        <input type="text" class="form-control" id="inputLastName">
-                    </div>
-                    <div class="col-12">
-                        <label class="form-label">Fecha de nacimiento</label>
-                        <input type="text" class="form-control" id="inputDUI">
-                    </div>
-                    <div class="col-12">
-                        <label class="form-label">Teléfono</label>
-                        <input type="text" class="form-control" id="inputPhoneNumber">
-                    </div>
-                    <div class="col-12">
-                        <label class="form-label">Email</label>
-                        <input type="email" class="form-control" id="inputEmail">
-                    </div>
-                   
-                    <div class="col-12">
-                        <br>
-                        <button type="submit" class="submit">Actualizar Datos</button>
-                    </div>
-                </form>
+                        <br><br><br><br><br><br><br>
+                        <div class="col-md-6">
+                            <label class="form-label">Nombres</label>
+                            <input type="text" class="form-control" id="inputName">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">DUI</label>
+                            <input type="text" class="form-control" id="inputLastName">
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Fecha de nacimiento</label>
+                            <input type="text" class="form-control" id="inputDUI">
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Teléfono</label>
+                            <input type="text" class="form-control" id="inputPhoneNumber">
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" id="inputEmail">
+                        </div>
+                        <div class="col-12">
+                            <br>
+                            <button type="submit" class="submit">Actualizar Datos</button>
+                        </div>
+                    </form>
+                </div>
             </div>
+
+            <!-- LEFT SECTION -->
+            <div class="col-2 left-section"></div>
         </div>
+
+    </main>
+    </div>
     </div>
 </body>
 
