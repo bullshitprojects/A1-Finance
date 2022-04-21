@@ -8,10 +8,11 @@ class Usuario
   private $fechaNacimiento;
   private $telefono;
   private $correo;
+  private $contra;
   private $id_tipoUsuario;
   
   //Constructores
-  public function __construct($id_usuario, $nombre, $dui, $foto, $fechaNacimiento, $telefono, $correo, $id_tipoUsuario)
+  public function __construct($id_usuario, $nombre, $dui, $foto, $fechaNacimiento, $telefono, $correo, $contra ,$id_tipoUsuario)
   {
     $this->id_usuario = $id_usuario;
     $this->nombre = $nombre;
@@ -20,6 +21,7 @@ class Usuario
     $this->fechaNacimiento = $fechaNacimiento;
     $this->telefono = $telefono;
     $this->correo = $correo;
+    $this->contra = $contra;
     $this->id_tipoUsuario = $id_tipoUsuario;
   }
 
@@ -86,6 +88,15 @@ class Usuario
   public function getCorreo():string
   {
     return $this->correo;
+  }
+
+  public function setContra(string $contra){
+    $this->contra = $contra;      
+  }
+  
+  public function getContra():string
+  {
+    return $this->contra;
   }
 
   public function getId_tipoUsuario():int
