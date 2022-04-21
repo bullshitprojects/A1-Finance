@@ -1,8 +1,24 @@
+.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0 !important;
+    align-items: center;
+}
+
+.menu-container {
+    margin-top: 3.5rem;
+}
+
 .dashboard-icon,
 .profile-icon,
 .settings-icon {
     display: flex;
     align-items: center;
+    margin-bottom: 1.5rem;
+    text-decoration: none !important;
+    transition: 0.7s all;
+    color: var(--color-link-activent);
 }
 
 .dashboard-icon::before,
@@ -14,7 +30,19 @@
     height: 1rem;
     mask-size: cover;
     -webkit-mask-size: cover;
-    background-color: var(--color-white);
+    background-color: var(--color-link-activent);
+}
+
+.dashboard-icon::before:hover,
+.profile-icon::before:hover,
+.settings-icon::before:hover {
+    background-color: var(--color-link-active);
+}
+
+.dashboard-icon:hover,
+.profile-icon:hover,
+.settings-icon:hover {
+    color: var(--color-link-active);
 }
 
 .dashboard-icon::before {
@@ -35,5 +63,5 @@
 .settings-icon::before,
 .dashboard-icon::before,
 .profile-icon::before {
-    margin-right: 0.5rem;
+    margin-right: 1.5rem;
 }
