@@ -31,7 +31,7 @@ class UsuarioController
             $sql = $conexionBD->prepare("SELECT * FROM usuario WHERE correo=?");
             $sql->execute(array($email));
             $Usuario = $sql->fetch();
-            $Usuario = new Usuario($Usuario['id_usuario'], $Usuario['nombre'], $Usuario['dui'], $Usuario['foto'], $Usuario['fechaNacimiento'], $Usuario['telefono'], $Usuario['correo'], $Usuario['contra'], $Usuario['id_tipoUsuario']);
+            $Usuario = new Usuario($Usuario['id_usuario'], $Usuario['nombre'], $Usuario['dui'], $Usuario['foto'], (new DateTime($Usuario['fechaNacimiento'])), $Usuario['telefono'], $Usuario['correo'], $Usuario['contra'], $Usuario['id_tipoUsuario']);
             return $Usuario;
         } catch (mysqli_sql_exception $e) {
         }
@@ -102,12 +102,21 @@ class UsuarioController
         );
     }
 
-    public static function ActualizarUsuario($id_usuario, $nombre, $dui, $foto, $fechaNacimiento, $telefono, $correo, $contra, $id_tipoUsuario)
+    public static function ActualizarUsuario(Usuario $usuario)
     {
         $conexionBD = Conectar::crearInstancia();
-        $sql = $conexionBD->prepare("UPDATE `usuario` SET `nombre`=?,`dui`=?,`foto`=?,`fechaNacimiento`=?,`telefono`=?,
-        `correo`=?,`contra`=?,`id_tipoUsuario`=? WHERE id_usuario=?");
-        $sql->execute(array($nombre, $dui, $foto, $fechaNacimiento, $telefono, $correo, $contra, $id_tipoUsuario, $id_usuario));
+        $sql = $conexionBD->prepare("UPDATE `usuario` SET `nombre`=?,`dui`=?,`fechaNacimiento`=?,`telefono`=?,`contra`=? WHERE correo=?");
+        $sql->execute(array(
+            $usuario->getNombre(),
+            $usuario->getDui(),
+            $usuario->getFechaNacimiento()->format('Y-m-d'),
+            $usuario->getTelefono(),
+            $usuario->getContra(),
+            $usuario->getCorreo(),
+        ));
+        session_start();
+        $_SESSION['usuario'] = UsuarioController::ObtenerUsuario($usuario->getCorreo());
+        return "Datos Modificados";
     }
 
     public static function ListaUsuarios()

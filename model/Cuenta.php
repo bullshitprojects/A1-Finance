@@ -1,6 +1,7 @@
 <?php
 class Cuenta
 {
+  private $id_cuenta;
   private $numeroCuenta;
   private $entidadFinanciera;
   private $nombre;
@@ -8,8 +9,9 @@ class Cuenta
   private $id_usuario;
   
   //Constructores
-  public function __construct($numeroCuenta, $entidadFinanciera, $nombre, $saldoInicial, $id_usuario)
+  public function __construct($id_cuenta, $numeroCuenta, $entidadFinanciera, $nombre, $saldoInicial, $id_usuario)
   {
+    $this->id_cuenta = $id_cuenta;
     $this->numeroCuenta = $numeroCuenta;
     $this->entidadFinanciera = $entidadFinanciera;
     $this->nombre = $nombre;
@@ -18,6 +20,15 @@ class Cuenta
   }
 
   //Modificadores de acceso
+  public function getId_cuenta():string
+  {
+    return $this->id_cuenta;
+  }
+
+  public function setId_cuenta(string $id_cuenta){
+    $this->id_cuenta = $id_cuenta;      
+  }
+
   public function getNumeroCuenta():string
   {
     return $this->numeroCuenta;

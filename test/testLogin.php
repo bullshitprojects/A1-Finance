@@ -31,9 +31,9 @@
         $clave = $_POST['inputPass'];
         try {
             if (UsuarioController::ValidarUsuario($email, $clave) == 1) {
-                $usuario = $_SESSION['usuario'];
-                echo 'Excepción capturada: ';
-                //Redireccionar al dashboard
+                session_start();
+                $usuario = $_SESSION['usuario'];               
+                header("location: /A1-finance/test/testActualizarUsuario.php");
             } else {
                 //Redireccionar al login
             }
