@@ -4,8 +4,8 @@
     ?>
     <div class="border-gradient"></div>
     <div class="menu-container">
-        <a href="/" class="dashboard-icon">Tablero</a>
-        <a href="/?path=profile" class="profile-icon">Perfil</a>
-        <a href="/?path=settings" class="settings-icon">Ajustes</a>
+        <a href="?path=home" class="dashboard-icon">Tablero</a>
+        <a href="?path=profile" class="profile-icon">Perfil</a>
+        <a href="?path=settings" class="settings-icon">Ajustes</a>
     </div>
 </div>

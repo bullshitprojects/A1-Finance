@@ -19,7 +19,7 @@
                 <form class="row g-3">
                     <div class="col-12">
                         <div class="profile-pic-div">
-                            <img src="../web/images/perfil.png" id="photo">
+                            <img src="web/images/perfil.png" id="photo">
                             <input type="file" id="file">X
                             <label for="file" id="uploadBtn">Elegir foto</label>
                         </div>
