@@ -23,19 +23,19 @@ if (!$_SESSION['validate']) {
     <main class="container-fluid main">
         <div class="row">
             <!-- LEFT MENU -->
-            <!-- DESKTOP -->
+            <!-- DESKTOP AND MOBILE -->
             <?php
-            include 'modules/desktop-menu.php'
-            ?>
-
-            <!-- MOBILE MENU -->
-            <?php
+            include 'modules/desktop-menu.php';
             include 'modules/mobile-menu.php'
             ?>
 
             <!-- MAIN CONTENT HERE -->
-            <div class="col-8 border-both main-content">
-                <!-- CONTENIDO DEL CENTRO -->
+            <div class="col-8 border-both main-content px-5">
+                <?php
+                include 'modules/balance-container.view.php';
+                include 'modules/account-container.view.php';
+                include 'modules/transactions.view.php';
+                ?>
             </div>
 
             <!-- LEFT SECTION -->
