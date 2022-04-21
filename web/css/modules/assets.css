@@ -1,5 +1,11 @@
 :root {
-    --asset-dashboard-icon: url('https://res.cloudinary.com/dssz7ge5q/image/upload/v1650518691/A1Finance/ic_baseline-space-dashboard_wnqxm0.svg');
-    --asset-profile-icon: url('https://res.cloudinary.com/dssz7ge5q/image/upload/v1650518792/A1Finance/line-md_account_ciq7zi.svg');
-    --asset-settings-icon: url('https://res.cloudinary.com/dssz7ge5q/image/upload/v1650518820/A1Finance/fluent_toggle-right-28-regular_d6ccqe.svg');
+    --asset-dashboard-icon: url('https://res.cloudinary.com/dssz7ge5q/image/upload/v1650570238/A1Finance/ic_baseline-space-dashboard_dvl1xf.svg');
+    --asset-profile-icon: url('https://res.cloudinary.com/dssz7ge5q/image/upload/v1650570237/A1Finance/line-md_account_gdwocv.svg');
+    --asset-settings-icon: url('https://res.cloudinary.com/dssz7ge5q/image/upload/v1650570237/A1Finance/fluent_toggle-right-28-regular_msidaq.svg');
+    --asset-cash-icon: url('https://res.cloudinary.com/dssz7ge5q/image/upload/v1650570239/A1Finance/akar-icons_money_fdyviu.svg');
+    --asset-credit-icon: url('https://res.cloudinary.com/dssz7ge5q/image/upload/v1650570239/A1Finance/bxs_credit-card-front_mefrix.svg  ');
+    --asset-menu-icon: url('https://res.cloudinary.com/dssz7ge5q/image/upload/v1650570237/A1Finance/carbon_overflow-menu-vertical_bxn82u.svg');
+    --asset-outcome-icon: url('https://res.cloudinary.com/dssz7ge5q/image/upload/v1650570238/A1Finance/carbon_arrow-up-right_rwm8u9.svg');
+    --asset-income-icon: url('https://res.cloudinary.com/dssz7ge5q/image/upload/v1650570237/A1Finance/carbon_arrow-down-left_qmdzax.svg');
+    --asset-transaction-icon: url('https://res.cloudinary.com/dssz7ge5q/image/upload/v1650573164/A1Finance/clarity_two-way-arrows-line_cvesse.svg');
 }
