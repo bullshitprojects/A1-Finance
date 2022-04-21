@@ -1,0 +1,21 @@
+:root {
+    /** FONT WEIGHT DEFINITION **/
+    --font-weight-black: 800;
+    --font-weight-bold: 700;
+    --font-weight-semi-bold: 600;
+    --font-weight-medium: 500;
+    --font-weight-regular: 400;
+    --font-weight-light: 300;
+
+    /** @CUSTOM COLORS **/
+    --color-orange-strong: #f97119;
+    --color-orange: #fe9a19;
+    --background-darker: #0e1011;
+    --background-dark: #191c1f;
+    --color-white: #fff;
+    --color-primary-text: var(--color-white);
+    --color-secondary-text: #b0b0b0;
+    --color-border: #7c7c7c;
+    --color-red-danger: #ff2525;
+    --color-green: #2af598;
+}
