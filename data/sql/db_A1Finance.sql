@@ -14,8 +14,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `db_A1Finance`
 --
-CREATE DATABASE IF NOT EXISTS `db_A1Finance` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `db_A1Finance`;
 
 -- --------------------------------------------------------
 
