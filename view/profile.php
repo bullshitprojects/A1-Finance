@@ -30,25 +30,22 @@
                         <input type="text" class="form-control" id="inputName">
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">Apellidos</label>
+                        <label class="form-label">DUI</label>
                         <input type="text" class="form-control" id="inputLastName">
                     </div>
                     <div class="col-12">
-                        <label class="form-label">DUI</label>
+                        <label class="form-label">Fecha de nacimiento</label>
                         <input type="text" class="form-control" id="inputDUI">
                     </div>
                     <div class="col-12">
                         <label class="form-label">Teléfono</label>
                         <input type="text" class="form-control" id="inputPhoneNumber">
                     </div>
-                    <div class="col-8">
+                    <div class="col-12">
                         <label class="form-label">Email</label>
                         <input type="email" class="form-control" id="inputEmail">
                     </div>
-                    <div class="col-4">
-                        <label class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="inputEmail">
-                    </div>
+                   
                     <div class="col-12">
                         <br>
                         <button type="submit" class="submit">Actualizar Datos</button>
