@@ -114,7 +114,6 @@ class UsuarioController
             $usuario->getContra(),
             $usuario->getCorreo(),
         ));
-        session_start();
         $_SESSION['usuario'] = UsuarioController::ObtenerUsuario($usuario->getCorreo());
         return "Datos Modificados";
     }
