@@ -55,20 +55,23 @@
     if ($_POST) {
         include_once("../model/Usuario.php");
         include_once("../controller/UsuarioController.php");
-        $name = $_POST['inputName'];
-        $dui = $_POST['inputDui'];
-        $photo = $_POST['file'];
-        $fecha = new DateTime($_POST['inputFechaNac']);
-        $number = $_POST['inputPhoneNumber'];
-        $email = $_POST['inputEmail'];
-        $pass = $_POST['inputPass'];
-        UsuarioController::CrearUsuario($Usuario = new Usuario("",$name,$dui,$photo,
-            $fecha,
-            $number,
-            $email,
-            $pass,
+        $resulset = UsuarioController::ValidarEmail($_POST['inputEmail'], $Usuario = new Usuario(
+            "",
+            $_POST['inputName'],
+            $_POST['inputDui'],
+            $_POST['file'],
+            new DateTime($_POST['inputFechaNac']),
+            $_POST['inputPhoneNumber'],
+            $_POST['inputEmail'],
+            $_POST['inputPass'],
             1
         ));
+        if ($resulset == 1) {
+            //Aqui para cuando el usuario se creo 
+        }else{
+            echo "ya existia";
+            //Aqui cuando el correo ya existia
+        }
     }
     ?>
 </body>

@@ -1,8 +1,10 @@
 <?php
     //Crear usuario en la base de datos
     class Conectar {
+        
         private static $instancia = NULL;
         public static function crearInstancia(){
+            try {
             $host="localhost";
             $dbname="db_A1Finance";
             $username="A1root";
@@ -12,7 +14,10 @@
                 self::$instancia = new PDO ("mysql:host=$host;dbname=$dbname",$username,$pass,$opcionesPDO);
             }
             return self::$instancia;
-            }
-        
+            
+        } catch (PDOException $e ) {
+            throw new PDOException( $e->getMessage( ) , $e->getCode( ) );
+            echo $e;
+        }
     }
-?>
+    }

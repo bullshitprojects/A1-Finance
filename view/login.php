@@ -30,7 +30,6 @@ if (!$_SESSION['validate']) {
                 <h1 class="finance">Finance</h1>
             </div>
         </div>
-
         <div class="container ">
             <p class="d-flex justify-content-start logtext"> Tus Finanzas, <br> tu futuro</p>
             <div class="d-flex justify-content-end">
@@ -38,11 +37,11 @@ if (!$_SESSION['validate']) {
                     <form class="row g-3 vertical-center">
                         <div class="col-12">
                             <label class="form-label">Correo</label>
-                            <input type="text" style="width: 70% !important;" class="form-control" id="inputName" required>
+                            <input type="text" style="width: 70% !important;" class="form-control" id="inputName" name="inputName" required>
                         </div>
                         <div class="col-12">
                             <label class="form-label">Contraseña</label>
-                            <input type="password" style="width: 70% !important;" class="form-control" id="inputPass" required>
+                            <input type="password" style="width: 70% !important;" class="form-control" id="inputPass" name="inputPass" required>
                         </div>
                         <div class="col-12">
                             <br>
@@ -54,8 +53,6 @@ if (!$_SESSION['validate']) {
                 </div>
             </div>
         </div>
-
     </main>
 </body>
-
 </html>
