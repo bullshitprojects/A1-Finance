@@ -5,13 +5,13 @@ class Pages
     {
         switch ($link) {
             case 'login' || 'logout' || 'profile' || 'settings':
-                $module = 'views/' . $link . '.php';
+                $module = 'view/' . $link . '.php';
                 break;
             case 'index' || 'home':
-                $module = 'views/login.php';
+                $module = 'view/home.php';
                 break;
             default:
-                $module = 'views/login.php';
+                $module = 'view/login.php';
                 break;
         }
 
