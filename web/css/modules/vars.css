@@ -20,4 +20,11 @@
     --color-green: #2af598;
     --color-link-activent: #d3d3d3;
     --color-link-active: var(--color-white);
+    --color-aqua: #80d0c7;
+    --color-aqua-strong: #0093e9;
+    --color-scrollbar-background: #333333;
+    --color-scrollbar-highlight: var(--color-link-active);
+    --color-date: var(--color-border);
+    --color-icon-background: #26282c;
+    --color-category-background: #333333;
 }
