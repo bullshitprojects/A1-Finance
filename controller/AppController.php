@@ -1,4 +1,5 @@
 <?php
+include 'UsuarioController.php';
 class AppController
 {
     public function page()
@@ -11,7 +12,7 @@ class AppController
         if (isset($_GET['path'])) {
             $link = $_GET['path'];
         } else {
-            $link = 'home';
+            $link = 'login';
         }
 
         $response = Pages::pageRoute($link);

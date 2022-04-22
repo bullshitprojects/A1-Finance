@@ -1,6 +1,6 @@
 <?php
-include_once("../model/Usuario.php");
-include_once("../config/database.php");
+require_once("model/Usuario.php");
+require_once("config/database.php");
 
 class UsuarioController
 {
@@ -15,9 +15,20 @@ class UsuarioController
             if ($existe['existe'] > 0) {
                 session_start();
                 $_SESSION['usuario'] = UsuarioController::ObtenerUsuario($email);
-                return 1;
+                header('location:index.php?path=home');
             } else {
-                return 0;
+                echo '
+                    <script type=\'text/javascript\'>
+                        $(document).ready(function(){
+                            Swal.fire({
+                                icon: \'error\',
+                                title: \'Datos incorrectos, intentelo de nuevo\',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        });
+                    </script>
+                ';
             }
         } catch (Exception $e) {
             echo 'Excepción capturada: ',  $e->getMessage(), "\n";
@@ -70,9 +81,8 @@ class UsuarioController
                 $usuario->getContra(),
                 $usuario->getId_tipoUsuario(),
             ));
-
-        } catch (PDOException $e ) {
-            throw new PDOException( $e->getMessage( ) , $e->getCode( ) );
+        } catch (PDOException $e) {
+            throw new PDOException($e->getMessage(), $e->getCode());
         }
     }
 

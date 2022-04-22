@@ -34,10 +34,10 @@ if (!$_SESSION['validate']) {
             <p class="d-flex justify-content-start logtext"> Tus Finanzas, <br> tu futuro</p>
             <div class="d-flex justify-content-end">
                 <div class="loginform py-4 px-4">
-                    <form class="row g-3 vertical-center">
+                    <form action="" method="POST" class="row g-3 vertical-center">
                         <div class="col-12">
                             <label class="form-label">Correo</label>
-                            <input type="text" style="width: 70% !important;" class="form-control" id="inputName" name="inputName" required>
+                            <input type="email" style="width: 70% !important;" class="form-control" id="inputName" name="inputName" required>
                         </div>
                         <div class="col-12">
                             <label class="form-label">Contraseña</label>
@@ -54,5 +54,17 @@ if (!$_SESSION['validate']) {
             </div>
         </div>
     </main>
+
+    <?php
+    if (isset($_POST['inputName'])) {
+        $username = $_POST['inputName'];
+        $password = $_POST['inputPass'];
+
+        $login = new UsuarioController();
+        $login->ValidarUsuario($username, $password);
+    }
+
+    ?>
 </body>
+
 </html>
