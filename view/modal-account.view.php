@@ -1,9 +1,4 @@
-
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-whatever="@mdo">
-    Open modal for @mdo
-  </button>
-  
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="modalAccount" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content modalstyle">
         <div class="modal-header">
@@ -38,7 +33,7 @@
           <button type="button" class="btn btn-secondary" data-dismiss="modal">
             Cancelar
           </button>
-          <button type="button" class="btn btn-primary">Agregar Cuenta</button>
+          <button type="button" class="btn btn-primary modalBtn">Agregar Cuenta</button>
         </div>
       </div>
     </div>

@@ -9,6 +9,11 @@
 </head>
 
 <body>
+    <?php
+    include_once("../model/Usuario.php");
+    session_start();
+    $usuario = $_SESSION['usuario']
+    ?>
     <form action="" method="post">
         <div class="col-md-6">
             <label class="form-label">Numero de Cuenta</label>
@@ -35,16 +40,13 @@
     if ($_POST) {
         include_once("../model/Cuenta.php");
         include_once("../controller/CuentaController.php");
-        $resulset = UsuarioController::ValidarEmail($_POST['inputEmail'], $Usuario = new Usuario(
+        $resulset = CuentaController::CrearCuenta($Cuenta = new Cuenta(
             "",
-            $_POST['inputName'],
-            $_POST['inputDui'],
-            $_POST['file'],
-            new DateTime($_POST['inputFechaNac']),
-            $_POST['inputPhoneNumber'],
-            $_POST['inputEmail'],
-            $_POST['inputPass'],
-            1
+            $_POST['inputNumeroCuenta'],
+            $_POST['inputEntidadFinanciera'],
+            $_POST['inputNombre'],
+            $_POST['inputSaldoInicial'],
+            3,
         ));
         if ($resulset == 1) {
             //Aqui para cuando el usuario se creo 
