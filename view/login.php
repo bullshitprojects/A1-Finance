@@ -1,7 +1,7 @@
 <?php
 /*session_start();
 if (!$_SESSION['validate']) {
-    header('location:index.php?path=login');
+    header('location:index.php?page=login');
     exit();
 }*/
 ?>

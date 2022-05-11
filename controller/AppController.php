@@ -9,8 +9,8 @@ class AppController
 
     public function linkPages()
     {
-        if (isset($_GET['path'])) {
-            $link = $_GET['path'];
+        if (isset($_GET['page'])) {
+            $link = $_GET['page'];
         } else {
             $link = 'login';
         }

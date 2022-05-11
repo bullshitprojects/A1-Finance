@@ -15,7 +15,7 @@ class UsuarioController
             if ($existe['existe'] > 0) {
                 session_start();
                 $_SESSION['usuario'] = UsuarioController::ObtenerUsuario($email);
-                header('location:index.php?path=home');
+                header('location:index.php?page=home');
             } else {
                 echo '
                     <script type=\'text/javascript\'>
