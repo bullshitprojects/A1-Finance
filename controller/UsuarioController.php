@@ -42,7 +42,7 @@ class UsuarioController
             $sql = $conexionBD->prepare("SELECT * FROM usuario WHERE correo=?");
             $sql->execute(array($email));
             $Usuario = $sql->fetch();
-            $Usuario = new Usuario($Usuario['id_usuario'], $Usuario['nombre'], $Usuario['dui'], $Usuario['foto'], (new DateTime($Usuario['fechaNacimiento'])), $Usuario['telefono'], $Usuario['correo'], $Usuario['contra'], $Usuario['id_tipoUsuario']);
+            $Usuario = new Usuario($Usuario['id_usuario'], $Usuario['nombre'], $Usuario['url_foto'], (new DateTime($Usuario['fecha_nacimiento'])), $Usuario['telefono'], $Usuario['correo'], $Usuario['pwd'], $Usuario['id_tipoUsuario']);
             return $Usuario;
         } catch (mysqli_sql_exception $e) {
         }
@@ -70,11 +70,10 @@ class UsuarioController
     {
         try {
             $conexionBD = Conectar::crearInstancia();
-            $sql = $conexionBD->prepare("INSERT INTO usuario (`nombre`, `dui`, `foto`, `fechaNacimiento`, `telefono`, `correo`, `contra`, `id_tipoUsuario`) VALUES (?,?,?,?,?,?,?,?)");
+            $sql = $conexionBD->prepare("INSERT INTO usuario (`nombre`, `url_foto`, `fecha_nacimiento`, `telefono`, `correo`, `pwd`, `id_tipoUsuario`) VALUES (?,?,?,?,?,?,?)");
             $sql->execute(array(
                 $usuario->getNombre(),
-                $usuario->getDui(),
-                $usuario->getFoto(),
+                $usuario->getUrlFoto(),
                 $usuario->getFechaNacimiento()->format('Y-m-d'),
                 $usuario->getTelefono(),
                 $usuario->getCorreo(),
@@ -102,12 +101,11 @@ class UsuarioController
         return new Usuario(
             $Usuario['id_usuario'],
             $Usuario['nombre'],
-            $Usuario['dui'],
             $Usuario['foto'],
-            $Usuario['fechaNacimiento'],
+            $Usuario['fecha_nacimiento'],
             $Usuario['telefono'],
             $Usuario['correo'],
-            $Usuario['contra'],
+            $Usuario['pwd'],
             $Usuario['id_tipoUsuario']
         );
     }
@@ -115,10 +113,10 @@ class UsuarioController
     public static function ActualizarUsuario(Usuario $usuario)
     {
         $conexionBD = Conectar::crearInstancia();
-        $sql = $conexionBD->prepare("UPDATE `usuario` SET `nombre`=?,`dui`=?,`fechaNacimiento`=?,`telefono`=?,`contra`=? WHERE correo=?");
+        $sql = $conexionBD->prepare("UPDATE `usuario` SET `nombre`=?,`url_foto`=?,`fechaNacimiento`=?,`telefono`=?,`contra`=? WHERE correo=?");
         $sql->execute(array(
             $usuario->getNombre(),
-            $usuario->getDui(),
+            $usuario->getUrlFoto(),
             $usuario->getFechaNacimiento()->format('Y-m-d'),
             $usuario->getTelefono(),
             $usuario->getContra(),
@@ -138,12 +136,11 @@ class UsuarioController
             $listaPersonas[] = new Usuario(
                 $Usuario['id_usuario'],
                 $Usuario['nombre'],
-                $Usuario['dui'],
-                $Usuario['foto'],
-                $Usuario['fechaNacimiento'],
+                $Usuario['url_foto'],
+                $Usuario['fecha_nacimiento'],
                 $Usuario['telefono'],
                 $Usuario['correo'],
-                $Usuario['contra'],
+                $Usuario['pwd'],
                 $Usuario['id_tipoUsuario']
             );
         }
