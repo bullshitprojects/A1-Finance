@@ -1,4 +1,4 @@
--- DATABASE CREATION 
+-- DATABASE CREATION
 CREATE DATABASE a1_finance_db;
 USE a1_finance_db;
 
@@ -56,8 +56,9 @@ CREATE TABLE transaccion (
 CREATE TABLE usuario (
     id_usuario int NOT NULL AUTO_INCREMENT,
     nombre varchar(100) NOT NULL,
+    fecha_nacimiento date NOT NULL,
     telefono varchar(20) NOT NULL,
-    correo_usuario varchar(50) NOT NULL,
+    correo_usuario varchar(50) NOT NULL UNIQUE,
     pwd varchar(512) NOT NULL,
     url_foto varchar(512) NOT NULL,
     tipo_usuario_id_tipo_usuario int NOT NULL,
