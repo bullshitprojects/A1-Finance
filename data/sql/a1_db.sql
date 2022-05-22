@@ -15,15 +15,15 @@ CREATE TABLE cuenta (
     id_cuenta int NOT NULL AUTO_INCREMENT,
     no_cuenta varchar(50) NOT NULL COMMENT 'Puede ser numero o nombre',
     usuario_id_usuario int NOT NULL,
-    tipo_cuenta_tipo varchar(50) NOT NULL,
+    tipo_cuenta_id_tipo_cuenta int NOT NULL,
     CONSTRAINT cuenta_pk PRIMARY KEY (id_cuenta)
 );
 
 -- Table: tipo_cuenta
 CREATE TABLE tipo_cuenta (
-    tipo varchar(50) NOT NULL AUTO_INCREMENT,
-    id_tipo_cuenta int NOT NULL,
-    CONSTRAINT tipo_cuenta_pk PRIMARY KEY (tipo)
+    id_tipo_cuenta int AUTO_INCREMENT,
+    tipo varchar(50) NOT NULL,
+    CONSTRAINT tipo_cuenta_pk PRIMARY KEY (id_tipo_cuenta)
 );
 
 -- Table: tipo_transaccion
@@ -67,8 +67,8 @@ CREATE TABLE usuario (
 
 -- foreign keys
 -- Reference: cuenta_tipo_cuenta (table: cuenta)
-ALTER TABLE cuenta ADD CONSTRAINT cuenta_tipo_cuenta FOREIGN KEY cuenta_tipo_cuenta (tipo_cuenta_tipo)
-    REFERENCES tipo_cuenta (tipo);
+ALTER TABLE cuenta ADD CONSTRAINT cuenta_tipo_cuenta FOREIGN KEY cuenta_tipo_cuenta (tipo_cuenta_id_tipo_cuenta)
+    REFERENCES tipo_cuenta (id_tipo_cuenta);
 
 -- Reference: cuenta_usuario (table: cuenta)
 ALTER TABLE cuenta ADD CONSTRAINT cuenta_usuario FOREIGN KEY cuenta_usuario (usuario_id_usuario)
