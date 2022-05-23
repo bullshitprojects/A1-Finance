@@ -8,4 +8,6 @@
     --asset-outcome-icon: url('https://res.cloudinary.com/dssz7ge5q/image/upload/v1650570238/A1Finance/carbon_arrow-up-right_rwm8u9.svg');
     --asset-income-icon: url('https://res.cloudinary.com/dssz7ge5q/image/upload/v1650570237/A1Finance/carbon_arrow-down-left_qmdzax.svg');
     --asset-transaction-icon: url('https://res.cloudinary.com/dssz7ge5q/image/upload/v1650573164/A1Finance/clarity_two-way-arrows-line_cvesse.svg');
+    --asset-input-error: url('https://res.cloudinary.com/dssz7ge5q/image/upload/v1653191289/A1Finance/fluent_error-circle-20-filled_gyvvtp.png');
+    --asset-input-success: url('https://res.cloudinary.com/dssz7ge5q/image/upload/v1653191291/A1Finance/clarity_success-standard-solid_q0kuyt.png');
 }

@@ -9,10 +9,14 @@
 <script defer src="https://unpkg.com/scrollreveal"></script>
 
 <!-- JQUERY IMPORT -->
-<script async src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<!-- JQUERY UI IMPORT -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js" integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA=" crossorigin="anonymous"></script>
 
 <!-- SWEET ALERT 2 IMPORT -->
 <script defer src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <!-- @CUSTOM SCRIPTS -->
-<script defer src="web/js/main.js"></script>
+<script defer type="module" src="web/js/main.js"></script>

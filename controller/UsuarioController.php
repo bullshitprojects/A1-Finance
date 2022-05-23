@@ -9,10 +9,15 @@ class UsuarioController
     {
         try {
             $conexionBD = Conectar::crearInstancia();
-            $sql = $conexionBD->prepare("SELECT COUNT(*) AS existe FROM usuario WHERE correo=? and contra =? ");
-            $sql->execute(array($email, $pass));
-            $existe = $sql->fetch();
-            if ($existe['existe'] > 0) {
+            $sql = $conexionBD->prepare("SELECT pwd FROM usuario WHERE correo_usuario=?");
+            //=================================
+            //  VERIFY PASSWORD
+            //=================================
+
+            $sql->execute(array($email));
+            $data = $sql->fetch();
+            $existe = password_verify($pass, $data['pwd']);
+            if ($existe) {
                 session_start();
                 $_SESSION['usuario'] = UsuarioController::ObtenerUsuario($email);
                 header('location:index.php?page=home');
@@ -39,10 +44,22 @@ class UsuarioController
     {
         try {
             $conexionBD = Conectar::crearInstancia();
-            $sql = $conexionBD->prepare("SELECT * FROM usuario WHERE correo=?");
+            $sql = $conexionBD->prepare("SELECT * FROM usuario WHERE correo_usuario=?");
             $sql->execute(array($email));
-            $Usuario = $sql->fetch();
-            $Usuario = new Usuario($Usuario['id_usuario'], $Usuario['nombre'], $Usuario['url_foto'], (new DateTime($Usuario['fecha_nacimiento'])), $Usuario['telefono'], $Usuario['correo'], $Usuario['pwd'], $Usuario['id_tipoUsuario']);
+            $data = $sql->fetch();
+            $Usuario = new Usuario();
+            $Usuario->setIdUsuario($data['id_usuario']);
+            $Usuario->setNombre($data['nombre']);
+            $Usuario->setUrlFoto($data['url_foto']);
+            $Usuario->setFechaNacimiento(new DateTime($data['fecha_nacimiento']));
+            $Usuario->setTelefono($data['telefono']);
+            $Usuario->setCorreo($data['correo_usuario']);
+            //=================================
+            // 1 = ENCRYPT
+            // ? = READ
+            //=================================
+            $Usuario->setContra($data['pwd'], 0);
+            $Usuario->setId_tipoUsuario($data['tipo_usuario_id_tipo_usuario']);
             return $Usuario;
         } catch (mysqli_sql_exception $e) {
         }
@@ -52,7 +69,7 @@ class UsuarioController
     {
         try {
             $conexionBD = Conectar::crearInstancia();
-            $sql = $conexionBD->prepare("SELECT COUNT(correo) AS existe FROM usuario WHERE correo=?");
+            $sql = $conexionBD->prepare("SELECT COUNT(correo_usuario) AS existe FROM usuario WHERE correo_usuario=?");
             $sql->execute(array($email));
             $existe = $sql->fetch();
             if ($existe['existe'] == 0) {
@@ -70,7 +87,7 @@ class UsuarioController
     {
         try {
             $conexionBD = Conectar::crearInstancia();
-            $sql = $conexionBD->prepare("INSERT INTO usuario (`nombre`, `url_foto`, `fecha_nacimiento`, `telefono`, `correo`, `pwd`, `id_tipoUsuario`) VALUES (?,?,?,?,?,?,?)");
+            $sql = $conexionBD->prepare("INSERT INTO usuario (`nombre`, `url_foto`, `fecha_nacimiento`, `telefono`, `correo_usuario`, `pwd`, `tipo_usuario_id_tipo_usuario`) VALUES (?,?,?,?,?,?,?)");
             $sql->execute(array(
                 $usuario->getNombre(),
                 $usuario->getUrlFoto(),
@@ -80,8 +97,10 @@ class UsuarioController
                 $usuario->getContra(),
                 $usuario->getId_tipoUsuario(),
             ));
+            $_SESSION['usuario'] = UsuarioController::ObtenerUsuario($usuario->getCorreo());
+            header('location:index.php?page=home');
         } catch (PDOException $e) {
-            throw new PDOException($e->getMessage(), $e->getCode());
+            echo 'Excepción capturada: ',  $e->getMessage(), "\n";
         }
     }
 
@@ -113,7 +132,7 @@ class UsuarioController
     public static function ActualizarUsuario(Usuario $usuario)
     {
         $conexionBD = Conectar::crearInstancia();
-        $sql = $conexionBD->prepare("UPDATE `usuario` SET `nombre`=?,`url_foto`=?,`fechaNacimiento`=?,`telefono`=?,`contra`=? WHERE correo=?");
+        $sql = $conexionBD->prepare("UPDATE `usuario` SET `nombre`=?,`url_foto`=?,`fecha_nacimiento`=?,`telefono`=?,`pwd`=? WHERE correo_usuario=?");
         $sql->execute(array(
             $usuario->getNombre(),
             $usuario->getUrlFoto(),
@@ -139,7 +158,7 @@ class UsuarioController
                 $Usuario['url_foto'],
                 $Usuario['fecha_nacimiento'],
                 $Usuario['telefono'],
-                $Usuario['correo'],
+                $Usuario['correo_usuario'],
                 $Usuario['pwd'],
                 $Usuario['id_tipoUsuario']
             );

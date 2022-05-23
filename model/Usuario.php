@@ -10,18 +10,7 @@ class Usuario
     private $url_foto;
     private $id_tipo_usuario;
 
-    //Constructores
-    public function __construct($id_usuario, $nombre, $url_foto, $fecha_nacimiento, $telefono, $correo, $contra, $id_tipo_usuario)
-    {
-        $this->id_usuario = $id_usuario;
-        $this->nombre = $nombre;
-        $this->url_foto = $url_foto;
-        $this->fecha_nacimiento = $fecha_nacimiento;
-        $this->telefono = $telefono;
-        $this->correo = $correo;
-        $this->contra = $contra;
-        $this->id_tipo_usuario = $id_tipo_usuario;
-    }
+    //Constructor
 
     //Modificadores de acceso
     public function getIdUsuario(): int
@@ -84,13 +73,21 @@ class Usuario
         return $this->correo;
     }
 
-    public function setContra(string $contra)
+    public function setContra(string $contra, int $option)
     {
         //=================================
-        // SET HASH ENCRYPTION FOR PASSWORDS
+        // 1 = ENCRYPT
+        // ? = READ
         //=================================
-        $hash = password_hash($contra, PASSWORD_DEFAULT);
-        $this->contra = $hash;
+        if ($option == 1) {
+            //=================================
+            // SET HASH ENCRYPTION FOR PASSWORDS
+            //=================================
+            $hash = password_hash($contra, PASSWORD_DEFAULT);
+            $this->contra = $hash;
+        } else {
+            $this->contra = $contra;
+        }
     }
 
     public function getContra(): string

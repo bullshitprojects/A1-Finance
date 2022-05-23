@@ -8,6 +8,20 @@
 
 .menu-container {
     margin-top: 3.5rem;
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.dash-menu-link {
+    margin-top: auto;
+    text-decoration: none;
+    color: var(--color-link-activent);
+    transition: 0.7s all;
+}
+
+.dash-menu-link:hover {
+    color: var(--color-link-active);
 }
 
 .dashboard-icon,

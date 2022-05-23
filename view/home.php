@@ -1,9 +1,9 @@
 <?php
-/*session_start();
-if (!$_SESSION['validate']) {
+session_start();
+if (!$_SESSION['usuario']) {
     header('location:index.php?page=login');
     exit();
-}*/
+}
 ?>
 
 <!DOCTYPE html>

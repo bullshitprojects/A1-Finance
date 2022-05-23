@@ -7,5 +7,6 @@
         <a href="?page=home" class="dashboard-icon">Tablero</a>
         <a href="?page=profile" class="profile-icon">Perfil</a>
         <a href="?page=settings" class="settings-icon">Ajustes</a>
+        <a href="?page=logout" class="dash-menu-link">Cerrar Sesi&oacute;n</a>
     </div>
 </div>
