@@ -1,34 +1,27 @@
 <?php
 class TipoTransaccion
 {
-  private $id_tipoTransaccion;
-  private $descripción;
-  
-  
-  //Constructores
-  public function __construct($id_tipoTransaccion, $descripción)
-  {
-    $this->id_tipoTransaccion = $id_tipoTransaccion;
-    $this->descripción = $descripción;
-  }
+    private $id_tipo_transaccion;
+    private $descripcion;
 
-  //Modificadores de acceso
-  public function getId_tipoTransaccion():int
-  {
-    return $this->id_tipoTransaccion;
-  }
+    //Modificadores de acceso
+    public function getId_tipo_transaccion(): int
+    {
+        return $this->id_tipo_transaccion;
+    }
 
-  public function setId_tipoTransaccion(int $id_tipoTransaccion){
-    $this->id_tipoTransaccion = $id_tipoTransaccion;      
-  }
- 
-  public function getDescripción():string
-  {
-    return $this->descripción;
-  }
+    public function setId_tipo_transaccion(int $id_tipo_transaccion)
+    {
+        $this->id_tipo_transaccion = $id_tipo_transaccion;
+    }
 
-  public function setDescripción(string $descripción){
-    $this->descripción = $descripción;      
-  }
+    public function getDescripcion(): string
+    {
+        return $this->descripcion;
+    }
+
+    public function setDescripcion(string $descripcion)
+    {
+        $this->descripcion = $descripcion;
+    }
 }
-?>

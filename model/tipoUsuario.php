@@ -1,34 +1,27 @@
 <?php
 class TipoUsuario
 {
-  private $id_tipoUsuario;
-  private $descripción;
-  
-  
-  //Constructores
-  public function __construct($id_tipoUsuario, $descripción)
-  {
-    $this->id_tipoUsuario = $id_tipoUsuario;
-    $this->descripción = $descripción;
-  }
+    private $id_tipo_usuario;
+    private $descripcion;
 
-  //Modificadores de acceso
-  public function getId_tipoUsuario():int
-  {
-    return $this->id_tipoUsuario;
-  }
+    //Modificadores de acceso
+    public function getId_tipo_usuario(): int
+    {
+        return $this->id_tipo_usuario;
+    }
 
-  public function setId_tipoUsuario(int $id_tipoUsuario){
-    $this->id_tipoUsuario = $id_tipoUsuario;      
-  }
- 
-  public function getDescripción():string
-  {
-    return $this->descripción;
-  }
+    public function setId_tipo_usuario(int $id_tipo_usuario)
+    {
+        $this->id_tipo_usuario = $id_tipo_usuario;
+    }
 
-  public function setDescripción(string $descripción){
-    $this->descripción = $descripción;      
-  }
+    public function getDescripcion(): string
+    {
+        return $this->descripcion;
+    }
+
+    public function setDescripcion(string $descripcion)
+    {
+        $this->descripcion = $descripcion;
+    }
 }
-?>
