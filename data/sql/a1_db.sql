@@ -1,6 +1,8 @@
--- DATABASE CREATION
+-- Created by Vertabelo (http://vertabelo.com)
+-- Last modification date: 2022-05-24 04:18:05.23
+
 CREATE DATABASE a1_finance_db;
-USE a1_finance_db;
+USE a1_finance_db;;
 
 -- tables
 -- Table: categoria
@@ -14,21 +16,35 @@ CREATE TABLE categoria (
 CREATE TABLE cuenta (
     id_cuenta int NOT NULL AUTO_INCREMENT,
     no_cuenta varchar(50) NOT NULL COMMENT 'Puede ser numero o nombre',
+    presupuesto double NOT NULL,
+    balance double NOT NULL,
     usuario_id_usuario int NOT NULL,
     tipo_cuenta_id_tipo_cuenta int NOT NULL,
+    moneda_id_moneda int NOT NULL,
     CONSTRAINT cuenta_pk PRIMARY KEY (id_cuenta)
 );
 
+-- Table: moneda
+CREATE TABLE moneda (
+    id_moneda int NOT NULL COMMENT '1 Dolar
+2 Peso mexicano
+3 Peso argentino
+etc.',
+    nombre varchar(15) NOT NULL,
+    CONSTRAINT moneda_pk PRIMARY KEY (id_moneda)
+) COMMENT 'Esta tabla guardara la moneda de preferencia del usuario. Ejemplo: Dolares, colones lempiras.';
+
 -- Table: tipo_cuenta
 CREATE TABLE tipo_cuenta (
-    id_tipo_cuenta int AUTO_INCREMENT,
+    id_tipo_cuenta int NOT NULL AUTO_INCREMENT,
     tipo varchar(50) NOT NULL,
     CONSTRAINT tipo_cuenta_pk PRIMARY KEY (id_tipo_cuenta)
 );
 
 -- Table: tipo_transaccion
 CREATE TABLE tipo_transaccion (
-    id_tipo_transaccion int NOT NULL AUTO_INCREMENT,
+    id_tipo_transaccion int NOT NULL AUTO_INCREMENT COMMENT '1 Ingreso
+2 Egreso',
     descripcion varchar(100) NOT NULL,
     CONSTRAINT tipo_transaccion_pk PRIMARY KEY (id_tipo_transaccion)
 );
@@ -58,7 +74,7 @@ CREATE TABLE usuario (
     nombre varchar(100) NOT NULL,
     fecha_nacimiento date NOT NULL,
     telefono varchar(20) NOT NULL,
-    correo_usuario varchar(50) NOT NULL UNIQUE,
+    correo_usuario varchar(50) NOT NULL,
     pwd varchar(512) NOT NULL,
     url_foto varchar(512) NOT NULL,
     tipo_usuario_id_tipo_usuario int NOT NULL,
@@ -66,6 +82,10 @@ CREATE TABLE usuario (
 );
 
 -- foreign keys
+-- Reference: cuenta_moneda (table: cuenta)
+ALTER TABLE cuenta ADD CONSTRAINT cuenta_moneda FOREIGN KEY cuenta_moneda (moneda_id_moneda)
+    REFERENCES moneda (id_moneda);
+
 -- Reference: cuenta_tipo_cuenta (table: cuenta)
 ALTER TABLE cuenta ADD CONSTRAINT cuenta_tipo_cuenta FOREIGN KEY cuenta_tipo_cuenta (tipo_cuenta_id_tipo_cuenta)
     REFERENCES tipo_cuenta (id_tipo_cuenta);
@@ -89,5 +109,8 @@ ALTER TABLE transaccion ADD CONSTRAINT transaccion_tipo_transaccion FOREIGN KEY 
 -- Reference: usuario_tipo_usuario (table: usuario)
 ALTER TABLE usuario ADD CONSTRAINT usuario_tipo_usuario FOREIGN KEY usuario_tipo_usuario (tipo_usuario_id_tipo_usuario)
     REFERENCES tipo_usuario (id_tipo_usuario);
+
+ALTER TABLE usuario
+ADD CONSTRAINT correo_usuario_unique UNIQUE (correo_usuario);;
 
 -- End of file.
