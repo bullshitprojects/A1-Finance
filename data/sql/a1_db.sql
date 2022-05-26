@@ -29,7 +29,7 @@ CREATE TABLE moneda (
 2 Peso mexicano
 3 Peso argentino
 etc.',
-    nombre varchar(15) NOT NULL,
+    nombre varchar(25) NOT NULL,
     CONSTRAINT moneda_pk PRIMARY KEY (id_moneda)
 ) COMMENT 'Esta tabla guardara la moneda de preferencia del usuario. Ejemplo: Dolares, colones lempiras.';
 
@@ -120,16 +120,16 @@ ADD CONSTRAINT correo_usuario_unique UNIQUE (correo_usuario);;
 
 -- INSERTS
 
---ACCOUNT TYPES
+-- ACCOUNT TYPES
 INSERT INTO tipo_usuario (descripcion) VALUES ('FREEMIUM'); -- 1
 INSERT INTO tipo_usuario (descripcion) VALUES ('PREMIUM'); -- 2
 INSERT INTO tipo_usuario (descripcion) VALUES ('ENTERPRISE'); -- 3
 INSERT INTO tipo_usuario (descripcion) VALUES ('EMPLOYEE'); -- 4
 
 -- CURRENCY
-INSERT INTO moneda (nombre) VALUES ('DOLAR ($)'); -- 1
-INSERT INTO moneda (nombre) VALUES ('PESO MEXICANO ($)'); -- 2
-INSERT INTO moneda (nombre) VALUES ('PESO ARGENTINO($)'); -- 3
+INSERT INTO moneda (id_moneda, nombre) VALUES (1, 'DOLAR ($)'); -- 1
+INSERT INTO moneda (id_moneda, nombre) VALUES (2, 'PESO MEXICANO ($)'); -- 2
+INSERT INTO moneda (id_moneda, nombre) VALUES (3, 'PESO ARGENTINO($)'); -- 3
 
 -- TRANSACTION TYPE
 INSERT INTO tipo_transaccion (descripcion) VALUES ('INGRESO'); -- 1
