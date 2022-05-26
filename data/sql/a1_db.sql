@@ -1,5 +1,3 @@
--- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-05-24 04:18:05.23
 
 CREATE DATABASE a1_finance_db;
 USE a1_finance_db;;
@@ -9,6 +7,7 @@ USE a1_finance_db;;
 CREATE TABLE categoria (
     id_categoria int NOT NULL AUTO_INCREMENT,
     nombre varchar(50) NOT NULL,
+    tipo_transaccion_id_tipo_transaccion int NOT NULL,
     CONSTRAINT categoria_pk PRIMARY KEY (id_categoria)
 );
 
@@ -74,7 +73,7 @@ CREATE TABLE usuario (
     nombre varchar(100) NOT NULL,
     fecha_nacimiento date NOT NULL,
     telefono varchar(20) NOT NULL,
-    correo_usuario varchar(50) NOT NULL,
+    correo_usuario varchar(50) NOT NULL COLUMN_FORMAT FIXED,
     pwd varchar(512) NOT NULL,
     url_foto varchar(512) NOT NULL,
     tipo_usuario_id_tipo_usuario int NOT NULL,
@@ -82,6 +81,10 @@ CREATE TABLE usuario (
 );
 
 -- foreign keys
+-- Reference: categoria_tipo_transaccion (table: categoria)
+ALTER TABLE categoria ADD CONSTRAINT categoria_tipo_transaccion FOREIGN KEY categoria_tipo_transaccion (tipo_transaccion_id_tipo_transaccion)
+    REFERENCES tipo_transaccion (id_tipo_transaccion);
+
 -- Reference: cuenta_moneda (table: cuenta)
 ALTER TABLE cuenta ADD CONSTRAINT cuenta_moneda FOREIGN KEY cuenta_moneda (moneda_id_moneda)
     REFERENCES moneda (id_moneda);
@@ -114,3 +117,50 @@ ALTER TABLE usuario
 ADD CONSTRAINT correo_usuario_unique UNIQUE (correo_usuario);;
 
 -- End of file.
+
+-- INSERTS
+
+--ACCOUNT TYPES
+INSERT INTO tipo_usuario (descripcion) VALUES ('FREEMIUM'); -- 1
+INSERT INTO tipo_usuario (descripcion) VALUES ('PREMIUM'); -- 2
+INSERT INTO tipo_usuario (descripcion) VALUES ('ENTERPRISE'); -- 3
+INSERT INTO tipo_usuario (descripcion) VALUES ('EMPLOYEE'); -- 4
+
+-- CURRENCY
+INSERT INTO moneda (nombre) VALUES ('DOLAR ($)'); -- 1
+INSERT INTO moneda (nombre) VALUES ('PESO MEXICANO ($)'); -- 2
+INSERT INTO moneda (nombre) VALUES ('PESO ARGENTINO($)'); -- 3
+
+-- TRANSACTION TYPE
+INSERT INTO tipo_transaccion (descripcion) VALUES ('INGRESO'); -- 1
+INSERT INTO tipo_transaccion (descripcion) VALUES ('EGRESO'); -- 2
+INSERT INTO tipo_transaccion (descripcion) VALUES ('TRANSFERENCIA'); -- 3
+
+-- ACCOUNT TYPE
+INSERT INTO tipo_cuenta (tipo) VALUES ('EFECTIVO');
+INSERT INTO tipo_cuenta (tipo) VALUES ('TARJETA CREDITO');
+INSERT INTO tipo_cuenta (tipo) VALUES ('TARJETA DEBITO');
+INSERT INTO tipo_cuenta (tipo) VALUES ('CUENTA AHORRO');
+INSERT INTO tipo_cuenta (tipo) VALUES ('CUENTA CORRIENTE');
+
+-- CATEGORY
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('TRANSFERENCIA', 3);
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('SALARIO', 1);
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('VENTA', 1);
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('REEMBOLSO', 1);
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('CUPONES', 1);
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('INVERSIONES', 1);
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('REMESA', 1);
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('SUBSIDIOS', 1);
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('PENSION', 1);
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('DEPOSITO', 1);
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('DEPOSITO', 2);
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('SUPERMERCADO', 2);
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('ROPA', 2);
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('ZAPATOS', 2);
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('ELECTRODOMESTICOS', 2);
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('TECNOLOGIA', 2);
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('SERVICIOS', 2);
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('ACCESORIOS', 2);
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('FERRETERIA', 2);
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('GASOLINA', 2);
