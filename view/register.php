@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['usuario']) {
+if (isset($_SESSION['usuario'])) {
     header('location:index.php?page=home');
     exit();
 }
@@ -81,13 +81,11 @@ if ($_SESSION['usuario']) {
         $user = new Usuario();
         $user->setNombre($_POST['inputName']);
         $user->setTelefono($_POST['inputPhone']);
-
         //=================================
         // 1 = ENCRYPT
         // ? = READ
         //=================================
         $user->setContra($_POST['inputPass'], 1);
-
         $user->setCorreo($_POST['inputMail']);
         $user->setUrlFoto('null');
         $user->setFechaNacimiento(new DateTime($_POST['inputDate']));

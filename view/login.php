@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['usuario']) {
+if (isset($_SESSION['usuario'])) {
     header('location:index.php?page=home');
     exit();
 }
@@ -59,7 +59,6 @@ if ($_SESSION['usuario']) {
     if (isset($_POST['inputName'])) {
         $username = $_POST['inputName'];
         $password = $_POST['inputPass'];
-
         $login = new UsuarioController();
         $login->ValidarUsuario($username, $password);
     }

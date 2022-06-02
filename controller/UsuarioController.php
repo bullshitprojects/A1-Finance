@@ -16,6 +16,7 @@ class UsuarioController
 
             $sql->execute(array($email));
             $data = $sql->fetch();
+            echo $data['pwd'];
             $existe = password_verify($pass, $data['pwd']);
             if ($existe) {
                 session_start();
@@ -132,17 +133,17 @@ class UsuarioController
     public static function ActualizarUsuario(Usuario $usuario)
     {
         $conexionBD = Conectar::crearInstancia();
-        $sql = $conexionBD->prepare("UPDATE `usuario` SET `nombre`=?,`url_foto`=?,`fecha_nacimiento`=?,`telefono`=?,`pwd`=? WHERE correo_usuario=?");
+        // Completa $sql = $conexionBD->prepare("UPDATE `usuario` SET `nombre`=?,`url_foto`=?,`fecha_nacimiento`=?,`telefono`=?,`pwd`=? WHERE correo_usuario=?");
+        $sql = $conexionBD->prepare("UPDATE `usuario` SET `nombre`=?,`fecha_nacimiento`=?,`telefono`=? WHERE correo_usuario=?");
         $sql->execute(array(
             $usuario->getNombre(),
-            $usuario->getUrlFoto(),
             $usuario->getFechaNacimiento()->format('Y-m-d'),
             $usuario->getTelefono(),
-            $usuario->getContra(),
             $usuario->getCorreo(),
         ));
+
         $_SESSION['usuario'] = UsuarioController::ObtenerUsuario($usuario->getCorreo());
-        return "Datos Modificados";
+        header('location:index.php?page=profile');
     }
 
     public static function ListaUsuarios()
