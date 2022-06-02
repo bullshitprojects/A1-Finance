@@ -22,6 +22,8 @@
     --color-link-active: var(--color-white);
     --color-aqua: #80d0c7;
     --color-aqua-strong: #0093e9;
+    --color-third: #27736a;
+    --color-third-strong: #093933;
     --color-scrollbar-background: #333333;
     --color-scrollbar-highlight: var(--color-link-active);
     --color-date: var(--color-border);

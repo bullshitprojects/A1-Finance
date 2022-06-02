@@ -4,7 +4,6 @@ class Cuenta
     private $id_cuenta;
     private $no_cuenta;
     private $presupuesto;
-    private $balance;
     private $id_usuario;
     private $id_tipo_cuenta;
     private $id_moneda;

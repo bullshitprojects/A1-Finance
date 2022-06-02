@@ -10,48 +10,54 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form class="row g-3" action="" method="POST">
+                <form action="" method="POST" class="row g-3">
                     <div class="col-md-12">
                         <label for="nombreCuenta" class="form-label">Nombre</label>
                         <input type="text" class="form-control" id="nombreCuenta" name="nombreCuenta">
                     </div>
-
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label for="saldoCuenta" class="form-label">Saldo Inicial</label>
                         <input type="text" class="form-control" id="saldoCuenta" placeholder="$0.00" name="saldoCuenta">
                     </div>
                     <div class="col-md-6">
-                        <label for="presupuestoCuenta" class="form-label">Presupuesto</label>
-                        <input type="text" class="form-control" id="presupuestoCuenta" placeholder="$0.00" name="presupuestoCuenta">
-                    </div>
-
-                    <div class="col-md-6">
-                        <label for="inputState" class="form-label">Tipo de Cuenta</label>
-                        <select id="inputState" style="border-radius:10px" class="form-select">
+                        <label for="tipoCuenta" class="form-label">Tipo de Cuenta</label>
+                        <select id="tipoCuenta" name="tipoCuenta" style="border-radius:10px" class="form-select">
                             <option selected disabled>Selecciona una</option>
-                            <option>Efectivo</option>
-                            <option>Tarjeta de crédito</option>
-                            <option>
-                                <?php
-                                $hola = $_SESSION['usuario'];
-                                echo $hola->getIdUsuario();
-                                ?>
-                            </option>
+                            <?php
+                            $tipoCuentaController = new TipoCuentaController();
+                            $tipoCuentaController::ObtenerCuentas();
+                            ?>
                         </select>
                     </div>
                     <div class="col-md-6">
-                        <label for="inputState" class="form-label">Tipo de Moneda</label>
-                        <select id="inputState" style="border-radius:10px" class="form-select">
+                        <label for="moneda" class="form-label">Tipo de Moneda</label>
+                        <select id="moneda" name="moneda" style="border-radius:10px" class="form-select">
                             <option selected disabled>Selecciona una</option>
-                            <option>Efectivo</option>
-                            <option>Tarjeta de crédito</option>
+                            <?php
+                            $moneda = new MonedaController();
+                            $moneda::ObtenerMonedas();
+                            ?>
                         </select>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary modalBtn mt-2">Agregar Cuenta</button>
+                        <button type="submit" class="btn btn-primary modalBtn mt-2">Agregar Cuenta</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+<?php
+if (isset($_POST['nombreCuenta'])) {
+    $usuario = $_SESSION['usuario'];
+    $cuenta = new Cuenta();
+    $cuenta->setNo_cuenta($_POST['nombreCuenta']);
+    $cuenta->setBalance($_POST['saldoCuenta']);
+    $cuenta->setId_usuario($usuario->getIdUsuario());
+    $cuenta->setId_tipo_cuenta($_POST['tipoCuenta']);
+    $cuenta->setId_moneda($_POST['moneda']);
+    $addCuenta = new CuentaController();
+    $addCuenta->CrearCuenta($cuenta);
+}
+
+?>

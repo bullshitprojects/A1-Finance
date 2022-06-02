@@ -1,4 +1,8 @@
 <?php
+require_once("controller/TipoCuentaController.php");
+require_once("controller/MonedaController.php");
+require_once("controller/CuentaController.php");
+require_once("model/Cuenta.php");
 session_start();
 if (!$_SESSION['usuario']) {
     header('location:index.php?page=login');

@@ -63,6 +63,10 @@
     background: linear-gradient(to right, var(--color-aqua), var(--color-aqua-strong));
 }
 
+.card-account.third {
+    background: linear-gradient(to right, var(--color-third), var(--color-third-strong));
+}
+
 .card-account__amount {
     font-size: 1.25rem;
 }

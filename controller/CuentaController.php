@@ -1,6 +1,6 @@
 <?php
-include_once("../model/Cuenta.php");
-include_once("../config/database.php");
+include_once("model/Cuenta.php");
+include_once("config/database.php");
 
 class CuentaController
 {
@@ -12,7 +12,7 @@ class CuentaController
             $sql = $conexionBD->prepare("INSERT INTO cuenta (`no_cuenta`, `presupuesto`, `balance`, `usuario_id_usuario`, `tipo_cuenta_id_tipo_cuenta`, `moneda_id_moneda`) VALUES (?,?,?,?,?,?)");
             $sql->execute(array(
                 $cuenta->getNo_cuenta(),
-                $cuenta->getPresupuesto(),
+                0,
                 $cuenta->getBalance(),
                 $cuenta->getId_usuario(),
                 $cuenta->getId_tipo_cuenta(),
