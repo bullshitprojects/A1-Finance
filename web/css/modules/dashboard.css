@@ -265,3 +265,51 @@
 .transaction-entry__transaction-amount {
     font-weight: var(--font-weight-bold);
 }
+
+.btn-close-modal {
+    background-color: transparent;
+    outline: none;
+    border: none;
+}
+
+.btn-close-modal svg {
+    fill: var(--color-secondary-text) !important;
+}
+
+.modal-lg {
+    width: 560px;
+}
+
+.padding-modal {
+    padding: 1rem 1rem 0 1rem;
+    border-radius: 1rem;
+}
+
+.modal-footer {
+    border-top: unset !important;
+    padding: 0 !important;
+}
+
+.modal-header {
+    border-bottom: unset !important;
+    padding: 0 1rem !important;
+    padding-top: 0.5rem !important;
+}
+
+.modal-title {
+    font-size: 2rem;
+}
+
+.form-select {
+    color: var(--color-primary-text);
+    background-color: rgba(71, 71, 89, 0.56) !important;
+    border: none !important;
+}
+
+select option {
+    background: rgba(44, 44, 52, 0.96) !important;
+}
+
+select::-ms-expand {
+    display: none;
+}

@@ -9,17 +9,17 @@ class CuentaController
     {
         try {
             $conexionBD = Conectar::crearInstancia();
-            $sql = $conexionBD->prepare("INSERT INTO cuenta (`numero_cuenta`, `entidadFinanciera`, `nombre`, `saldoInicial`, `id_usuario`) VALUES (?,?,?,?,?)");
+            $sql = $conexionBD->prepare("INSERT INTO cuenta (`no_cuenta`, `presupuesto`, `balance`, `usuario_id_usuario`, `tipo_cuenta_id_tipo_cuenta`, `moneda_id_moneda`) VALUES (?,?,?,?,?,?)");
             $sql->execute(array(
-                $cuenta->getNumeroCuenta(),
-                $cuenta->getEntidadFinanciera(),
-                $cuenta->getNombre(),
-                $cuenta->getSaldoInicial(),
+                $cuenta->getNo_cuenta(),
+                $cuenta->getPresupuesto(),
+                $cuenta->getBalance(),
                 $cuenta->getId_usuario(),
+                $cuenta->getId_tipo_cuenta(),
+                $cuenta->getId_moneda()
             ));
-
-        } catch (PDOException $e ) {
-            throw new PDOException( $e->getMessage( ) , $e->getCode( ) );
+        } catch (PDOException $e) {
+            throw new PDOException($e->getMessage(), $e->getCode());
         }
     }
 
@@ -50,38 +50,45 @@ class CuentaController
     public static function ActualizarCuenta(Cuenta $cuenta)
     {
         $conexionBD = Conectar::crearInstancia();
-        $sql = $conexionBD->prepare("UPDATE `cuenta` SET `numero_cuenta`= ?,`entidadFinanciera`= ?,`nombre`= ?,`saldoInicial`= ?,`id_usuario`= ? WHERE id_cuenta=?");
+        $sql = $conexionBD->prepare("UPDATE `cuenta` SET `no_cuenta`= ?,`presupuesto`= ?,`balance`= ?,`tipo_cuenta_id_tipo_cuenta`= ?,`moneda_id_moneda`= ? WHERE id_cuenta=?");
         $sql->execute(array(
-            $cuenta->getNumeroCuenta(),
-            $cuenta->getEntidadFinanciera(),
-            $cuenta->getNombre(),
-            $cuenta->getSaldoInicial(),
-            $cuenta->getId_usuario(),
+            $cuenta->getNo_cuenta(),
+            $cuenta->getPresupuesto(),
+            $cuenta->getBalance(),
+            $cuenta->getId_tipo_cuenta(),
+            $cuenta->getId_moneda()
         ));
         session_start();
         $_SESSION['cuenta'] = CuentaController::BuscarCuenta($cuenta->getId_cuenta());
         return "Datos Modificados";
     }
 
+    public static function ActualizarPresupuesto(Cuenta $cuenta)
+    {
+        $conexionBD = Conectar::crearInstancia();
+        $sql = $conexionBD->prepare("UPDATE `cuenta` SET `presupuesto` = ? WHERE id_cuenta = ?");
+        $sql->execute(array(
+            $cuenta->getPresupuesto(),
+            $cuenta->getId_cuenta(),
+        ));
+    }
+
+    public static function ActualizarBalance(Cuenta $cuenta)
+    {
+        $conexionBD = Conectar::crearInstancia();
+        $sql = $conexionBD->prepare("UPDATE `cuenta` SET `balance` = ? WHERE id_cuenta = ?");
+        $sql->execute(array(
+            $cuenta->getBalance(),
+            $cuenta->getId_cuenta()
+        ));
+    }
+
     public static function ListaCuenta()
     {
-        $listaPersonas = [];
         $conexionBD = Conectar::crearInstancia();
         $sql = $conexionBD->query("SELECT * FROM cuenta WHERE id_usuario=?");
+        $listaCuentas = $sql->fetchAll();
 
-        foreach ($sql->fetchAll() as $Usuario) {
-            $listaPersonas[] = new Usuario(
-                $Usuario['id_usuario'],
-                $Usuario['nombre'],
-                $Usuario['dui'],
-                $Usuario['foto'],
-                $Usuario['fechaNacimiento'],
-                $Usuario['telefono'],
-                $Usuario['correo'],
-                $Usuario['contra'],
-                $Usuario['id_tipoUsuario']
-            );
-        }
-        return $listaPersonas;
+        return $listaCuentas;
     }
 }
