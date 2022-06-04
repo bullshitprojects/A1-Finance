@@ -16,7 +16,7 @@ if (isset($_SESSION['usuario'])) {
     <?php
     include 'imports.php';
     ?>
-    <title>Register | A1 Finance</title>
+
 </head>
 
 <body>

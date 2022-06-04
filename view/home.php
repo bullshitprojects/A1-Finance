@@ -2,6 +2,10 @@
 require_once("controller/TipoCuentaController.php");
 require_once("controller/MonedaController.php");
 require_once("controller/CuentaController.php");
+require_once("controller/CategoriaController.php");
+require_once("controller/TipoTransaccionController.php");
+require_once("controller/TransaccionController.php");
+require_once("model/Transaccion.php");
 require_once("model/Cuenta.php");
 session_start();
 if (!$_SESSION['usuario']) {

@@ -83,12 +83,33 @@ class CuentaController
         ));
     }
 
-    public static function ListaCuenta()
+    public static function ListaCuenta($id)
     {
         $conexionBD = Conectar::crearInstancia();
-        $sql = $conexionBD->query("SELECT * FROM cuenta WHERE id_usuario=?");
+        $sql = $conexionBD->prepare("SELECT * FROM cuenta WHERE usuario_id_usuario=?");
+        $sql->execute(array($id));
         $listaCuentas = $sql->fetchAll();
-
         return $listaCuentas;
+    }
+
+    public static function ObtenerCuentas($id)
+    {
+        $conexionBD = Conectar::crearInstancia();
+        $sql = $conexionBD->prepare("SELECT * FROM cuenta WHERE usuario_id_usuario=?");
+        $sql->execute(array($id));
+        foreach ($sql->fetchAll() as $data) {
+            $id = $data['id_cuenta'];
+            $nombre = $data['no_cuenta'];
+            echo "<option value=\"$id\">$nombre</option>";
+        }
+    }
+
+    public static function ObtenerBalance($id)
+    {
+        $conexionBD = Conectar::crearInstancia();
+        $sql = $conexionBD->prepare("SELECT SUM(BALANCE) as balance FROM `cuenta` WHERE usuario_id_usuario =?");
+        $sql->execute(array($id));
+        $data = $sql->fetch();
+        echo "$" . number_format(floatval($data['balance']), 2);
     }
 }

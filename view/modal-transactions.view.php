@@ -8,46 +8,72 @@
           </button>
         </div>
         <div class="modal-body">
-          <form>
-            <form class="row g-3">
-              <div class="col-md-6">
-                <label for="inputPassword4" class="form-label">Fecha</label>
-                <input type="text" class="form-control" id="inputPassword4">
-              </div>
-              <div class="col-md-6 mt-4">
-                <label for="inputAddress2" class="form-label">Importe</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="$0.00">
-              </div>
-              <div class="col-md-4 mt-4">
-                <label for="inputState" class="form-label">Tipo de transacción</label>
-                <select id="inputState" style="width: 230px; border-radius:10px" class="form-select">
-                  <option selected>Ingreso</option>
-                  <option>Egreso</option>
-                </select>
-              </div>
-              <div class="col-md-4 mt-4">
-                <label for="inputState" class="form-label">Categoría</label>
-                <select id="inputState" style="width: 230px; border-radius:10px" class="form-select">
-                  <option selected>Sueldo</option>
-                  <option>Remesas</option>
-                </select>
-              </div>
-              <div class="col-md-4 mt-4">
-                <label for="inputState" class="form-label">Cuenta</label>
-                <select id="inputState" style="width: 230px; border-radius:10px" class="form-select">
-                  <option selected>Efectivo</option>
-                  <option>Tarjeta de Crédito</option>
-                </select>
-              </div>
-            </form>
-          </form>
+          <form action="" method="POST" class="row g-3">
+            <div class="col-md-8">
+              <label for="inputDateTransaccion" class="form-label ">Fecha</label>
+              <input type="text" placeholder="dd/mm/yyyy" class="form-control" id="inputDateTransaccion" name="inputDateTransaccion" require>
+            </div>
+            <div class="col-md-8 mt-4">
+              <label for="inputImporte" class="form-label">Importe</label>
+              <input type="text" class="form-control" name="inputImporte" id="inputImporte" placeholder="$0.00" require>
+            </div>
+            <div class="col-md-8 mt-4">
+              <label for="inputDescripcion" class="form-label">Descripción</label>
+              <input type="text" class="form-control" id="inputDescripcion" name="inputDescripcion" placeholder="" require>
+            </div>
+            <div class="col-md-8 mt-4">
+              <label for="inputTipo" class="form-label">Tipo de transacción</label>
+              <select id="inputTipo" name="inputTipo" style="width: 310px; border-radius:10px" class="form-select" require>
+                <option selected disabled>Selecciona una</option>
+                <?php
+                $tipos = new TipoTransaccionController();
+                $tipos::ObtenerTipos();
+                ?>
+              </select>
+            </div>
+            <div class="col-md-8 mt-4">
+              <label for="inputCategoria" class="form-label">Categoría</label>
+              <select id="inputCategoria" name="inputCategoria" style="width: 310px; border-radius:10px" class="form-select" require>
+                <option selected disabled>Selecciona una</option>
+                <?php
+                $categorias = new CategoriaController();
+                $categorias::ObtenerCategorias();
+                ?>
+              </select>
+            </div>
+            <div class="col-md-8 mt-4">
+              <label for="inputCuenta" class="form-label">Cuenta</label>
+              <select id="inputCuenta" name="inputCuenta" style="width: 310px; border-radius:10px" class="form-select" require>
+                <option selected disabled>Selecciona una</option>
+                <?php
+                $usuario = $_SESSION['usuario'];
+                $cuentas = new CuentaController();
+                $cuentas::ObtenerCuentas($usuario->getIdUsuario());
+                ?>
+              </select>
+            </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">
             Cancelar
           </button>
-        <button type="button" class="btn btn-primary modalBtn" >Agregar Transacción</button>
+          <button type="submit" class="btn btn-primary modalBtn">Agregar Transacción</button>
         </div>
+        </form>
       </div>
     </div>
   </div>
+  <?php
+  if (isset($_POST['inputImporte'])) {
+    $transaccion = new Transaccion();
+    $transaccion->setMonto($_POST['inputImporte']);
+    $transaccion->setFecha(new DateTime($_POST['inputDateTransaccion']));
+    $transaccion->setDescripcion($_POST['inputDescripcion'], 1);
+    $transaccion->setId_categoria($_POST['inputCategoria']);
+    $transaccion->setIdCuenta($_POST['inputCuenta']);
+    $transaccion->setId_tipo_transaccion($_POST['inputTipo']);
+    $procesarTransaccion = new TransaccionController();
+    $procesarTransaccion->CrearTransaccion($transaccion);
+  }
+
+  ?>

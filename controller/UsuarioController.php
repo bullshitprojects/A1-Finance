@@ -99,7 +99,7 @@ class UsuarioController
                 $usuario->getId_tipoUsuario(),
             ));
             $_SESSION['usuario'] = UsuarioController::ObtenerUsuario($usuario->getCorreo());
-            header('location:index.php?page=home');
+            //header('location:index.php?page=home');
         } catch (PDOException $e) {
             echo 'Excepción capturada: ',  $e->getMessage(), "\n";
         }

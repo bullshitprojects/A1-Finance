@@ -47,6 +47,7 @@
         </div>
     </div>
 </div>
+
 <?php
 if (isset($_POST['nombreCuenta'])) {
     $usuario = $_SESSION['usuario'];
@@ -59,5 +60,4 @@ if (isset($_POST['nombreCuenta'])) {
     $addCuenta = new CuentaController();
     $addCuenta->CrearCuenta($cuenta);
 }
-
 ?>

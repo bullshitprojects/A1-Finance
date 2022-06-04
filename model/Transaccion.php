@@ -5,8 +5,8 @@ class Transaccion
     private $fecha;
     private $descripcion;
     private $monto;
-    private $numero_cuenta;
-    private $id_usuario;
+    private $id_cuenta;
+    private $id_tipo_transaccion;
     private $id_categoria;
 
     //Modificadores de acceso
@@ -21,12 +21,12 @@ class Transaccion
     }
 
     //falta poner dato
-    public function getFecha()
+    public function getFecha(): DateTime
     {
         return $this->fecha;
     }
 
-    public function setFecha(string $fecha)
+    public function setFecha(DateTime $fecha)
     {
         $this->fecha = $fecha;
     }
@@ -48,27 +48,27 @@ class Transaccion
 
     public function setMonto(float $monto)
     {
-        $this->fotmontoo = $monto;
+        $this->monto = $monto;
     }
 
-    public function getNumeroCuenta(): string
+    public function getIdCuenta(): int
     {
-        return $this->numero_cuenta;
+        return $this->id_cuenta;
     }
 
-    public function setNumeroCuenta(string $numero_cuenta)
+    public function setIdCuenta(int $id_cuenta)
     {
-        $this->numero_cuenta = $numero_cuenta;
+        $this->id_cuenta = $id_cuenta;
     }
 
-    public function getId_usuario(): int
+    public function getId_tipo_transaccion(): int
     {
-        return $this->id_usuario;
+        return $this->id_tipo_transaccion;
     }
 
-    public function setId_usuario(int $id_usuario)
+    public function setId_tipo_transaccion(int $id_tipo_transaccion)
     {
-        $this->id_usuario = $id_usuario;
+        $this->id_tipo_transaccion = $id_tipo_transaccion;
     }
 
     public function getId_categoria(): int
@@ -76,7 +76,7 @@ class Transaccion
         return $this->id_categoria;
     }
 
-    public function setId_categoriao(int $id_categoria)
+    public function setId_categoria(int $id_categoria)
     {
         $this->id_categoria = $id_categoria;
     }

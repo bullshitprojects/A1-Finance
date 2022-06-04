@@ -18,11 +18,6 @@
     <div class="transactions__transaction">
         <?php
         include 'transaction-entry.view.php';
-        include 'transaction-entry.view.php';
-        include 'transaction-entry.view.php';
-        include 'transaction-entry.view.php';
-        include 'transaction-entry.view.php';
-        include 'transaction-entry.view.php';
         ?>
     </div>
 </div>

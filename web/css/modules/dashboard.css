@@ -55,11 +55,11 @@
     align-content: space-between;
 }
 
-.card-account.cash {
+.card-account.first {
     background: linear-gradient(to right, var(--color-orange), var(--color-orange-strong));
 }
 
-.card-account.credit-card {
+.card-account.second {
     background: linear-gradient(to right, var(--color-aqua), var(--color-aqua-strong));
 }
 

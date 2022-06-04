@@ -1,33 +1,44 @@
-<div class="mt-5 mb-5">
-    <p class="transaction-date">02 Abr, 2022</p>
+<?php
+$usuario = $_SESSION['usuario'];
+$transacion = new TransaccionController();
+$ltransacion = $transacion->TransaccionesPorUsuario($usuario->getIdUsuario());
 
-    <div class="transaction-entry mt-4">
-        <div class="transaction-entry__info">
-            <div class="transaction-icon-container">
-                <div class="transaction-entry__entry-icon"></div>
-            </div>
-            <div class="transaction-entry__details">
-                <h4>Salario</h4>
-                <p class="transaction-entry__date">
-                    02 Abr, 2022 a las 6:30pm
-                </p>
-            </div>
-        </div>
+foreach ($ltransacion as $t) {
+    $fecha = $t['fecha'];
+    $descripcion = $t['descripcion'];
+    $no_cuenta = $t['no_cuenta'];
+    $nombre = $t['nombre'];
+    $id_tipo_transaccion = $t['id_tipo_transaccion'];
+    $monto = "$" . number_format(floatval($t['monto']), 2);
 
-        <div class="transaction-entry__category">
-            <div class="transaction-entry__category-container">
-                <div class="transaction-entry__category-icon"></div>
-                <div class="transaction-entry__category-text">Categor&iacute;a</div>
-            </div>
-        </div>
+    echo "<div class=\"mt-5 mb-5\">";
+    echo "  <p class=\"transaction-date\">$fecha</p>";
 
-        <div class="transaction-entry__transaction-details">
-            <div class="transaction-entry__transaction-icon-container">
-                <div class="transaction-entry__transaction-icon"></div>
-            </div>
-            <div class="transaction-entry__transaction-amount">
-                <p>+$2400.00</p>
-            </div>
-        </div>
-    </div>
-</div>
+    echo "  <div class=\"transaction-entry mt-4\">";
+    echo "      <div class=\"transaction-entry__info\">";
+    echo "          <div class=\"transaction-icon-container\">";
+    echo "              <div class=\"transaction-entry__entry-icon\"></div>";
+    echo "          </div>";
+    echo "      <div class=\"transaction-entry__details\">";
+    echo "          <h4>$descripcion</h4>";
+    echo "          <p class=\"transaction-entry__date\">$no_cuenta</p>";
+    echo "      </div>";
+    echo "  </div>";
+
+    echo "  <div class=\"transaction-entry__category\">";
+    echo "      <div class=\"transaction-entry__category-container\">";
+    echo "          <div class=\"transaction-entry__category-icon\"></div>";
+    echo "          <div class=\"transaction-entry__category-text\">$nombre</div>";
+    echo "      </div>";
+    echo "  </div>";
+
+    echo "  <div class=\"transaction-entry__transaction-details\">";
+    echo "      <div class=\"transaction-entry__transaction-icon-container\">";
+    echo "          <div class=\"transaction-entry__transaction-icon\"></div>";
+    echo "      </div>";
+    echo "      <div class=\"transaction-entry__transaction-amount\">";
+    echo "          <p>$monto</p>";
+    echo "      </div>";
+    echo "  </div>";
+    echo "</div>";
+}

@@ -16,7 +16,7 @@ CREATE TABLE cuenta (
     id_cuenta int NOT NULL AUTO_INCREMENT,
     no_cuenta varchar(50) NOT NULL COMMENT 'Puede ser numero o nombre',
     presupuesto double NOT NULL,
-    balance double NOT NULL,
+    balance float NOT NULL,
     usuario_id_usuario int NOT NULL,
     tipo_cuenta_id_tipo_cuenta int NOT NULL,
     moneda_id_moneda int NOT NULL,
@@ -134,7 +134,7 @@ INSERT INTO moneda (id_moneda, nombre) VALUES (3, 'PESO ARGENTINO($)'); -- 3
 -- TRANSACTION TYPE
 INSERT INTO tipo_transaccion (descripcion) VALUES ('INGRESO'); -- 1
 INSERT INTO tipo_transaccion (descripcion) VALUES ('EGRESO'); -- 2
-INSERT INTO tipo_transaccion (descripcion) VALUES ('TRANSFERENCIA'); -- 3
+--INSERT INTO tipo_transaccion (descripcion) VALUES ('TRANSFERENCIA'); -- 3
 
 -- ACCOUNT TYPE
 INSERT INTO tipo_cuenta (tipo) VALUES ('EFECTIVO');
@@ -144,17 +144,16 @@ INSERT INTO tipo_cuenta (tipo) VALUES ('CUENTA AHORRO');
 INSERT INTO tipo_cuenta (tipo) VALUES ('CUENTA CORRIENTE');
 
 -- CATEGORY
-INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('TRANSFERENCIA', 3);
-INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('SALARIO', 1);
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('COMPRA', 3);
 INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('VENTA', 1);
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('SALARIO', 1);
 INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('REEMBOLSO', 1);
 INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('CUPONES', 1);
 INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('INVERSIONES', 1);
 INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('REMESA', 1);
-INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('SUBSIDIOS', 1);
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('RETIRO', 1);
 INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('PENSION', 1);
 INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('DEPOSITO', 1);
-INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('DEPOSITO', 2);
 INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('SUPERMERCADO', 2);
 INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('ROPA', 2);
 INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('ZAPATOS', 2);
