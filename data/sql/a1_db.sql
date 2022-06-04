@@ -134,7 +134,6 @@ INSERT INTO moneda (id_moneda, nombre) VALUES (3, 'PESO ARGENTINO($)'); -- 3
 -- TRANSACTION TYPE
 INSERT INTO tipo_transaccion (descripcion) VALUES ('INGRESO'); -- 1
 INSERT INTO tipo_transaccion (descripcion) VALUES ('EGRESO'); -- 2
---INSERT INTO tipo_transaccion (descripcion) VALUES ('TRANSFERENCIA'); -- 3
 
 -- ACCOUNT TYPE
 INSERT INTO tipo_cuenta (tipo) VALUES ('EFECTIVO');
@@ -144,7 +143,7 @@ INSERT INTO tipo_cuenta (tipo) VALUES ('CUENTA AHORRO');
 INSERT INTO tipo_cuenta (tipo) VALUES ('CUENTA CORRIENTE');
 
 -- CATEGORY
-INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('COMPRA', 3);
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('COMPRA', 2);
 INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('VENTA', 1);
 INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('SALARIO', 1);
 INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('REEMBOLSO', 1);
@@ -163,3 +162,4 @@ INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('SE
 INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('ACCESORIOS', 2);
 INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('FERRETERIA', 2);
 INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('GASOLINA', 2);
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('SALDO INICIAL', 2);

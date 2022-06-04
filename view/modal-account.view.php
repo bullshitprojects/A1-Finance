@@ -53,11 +53,22 @@ if (isset($_POST['nombreCuenta'])) {
     $usuario = $_SESSION['usuario'];
     $cuenta = new Cuenta();
     $cuenta->setNo_cuenta($_POST['nombreCuenta']);
-    $cuenta->setBalance($_POST['saldoCuenta']);
+    $cuenta->setBalance(0);
     $cuenta->setId_usuario($usuario->getIdUsuario());
     $cuenta->setId_tipo_cuenta($_POST['tipoCuenta']);
     $cuenta->setId_moneda($_POST['moneda']);
     $addCuenta = new CuentaController();
     $addCuenta->CrearCuenta($cuenta);
+    $idcuenta = $addCuenta::ObtenerCuentaCreada($usuario->getIdUsuario());
+
+    $transaccion = new Transaccion();
+    $transaccion->setMonto($_POST['saldoCuenta']);
+    $transaccion->setFecha(new DateTime());
+    $transaccion->setDescripcion("Saldo Inicial");
+    $transaccion->setId_categoria(20);
+    $transaccion->setIdCuenta($idcuenta);
+    $transaccion->setId_tipo_transaccion(1);
+    $procesarTransaccion = new TransaccionController();
+    $procesarTransaccion->CrearTransaccion($transaccion);
 }
 ?>

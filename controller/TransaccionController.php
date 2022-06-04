@@ -58,4 +58,21 @@ class TransaccionController
             echo 'Excepción capturada: ',  $e->getMessage(), "\n";
         }
     }
+
+    public static function TransaccionesPorTipo($id)
+    {
+        try {
+            $conexionBD = Conectar::crearInstancia();
+            $sql = $conexionBD->prepare("SELECT TP.id_tipo_transaccion AS id, SUM(T.monto) AS total FROM transaccion AS T 
+                JOIN cuenta AS C ON T.cuenta_id_cuenta = C.id_cuenta 
+                JOIN categoria AS CA ON T.categoria_id_categoria = CA.id_categoria 
+                JOIN tipo_transaccion AS TP ON T.tipo_transaccion_id_tipo_transaccion=TP.id_tipo_transaccion 
+                WHERE C.usuario_id_usuario = ? GROUP BY TP.id_tipo_transaccion;");
+            $sql->execute(array($id,));
+            $transaccionesTipo = $sql->fetchAll();
+            return $transaccionesTipo;
+        } catch (PDOException $e) {
+            echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+        }
+    }
 }

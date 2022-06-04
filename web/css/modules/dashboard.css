@@ -217,15 +217,27 @@
     font-size: 0.6rem;
 }
 
-.transaction-entry__category-text {
+.transaction-entry__category-text-entry {
     font-size: 0.75rem;
     color: var(--color-green);
 }
 
-.transaction-entry__category-icon {
+.transaction-entry__category-icon-entry {
     height: 8px;
     width: 8px;
     background-color: var(--color-green);
+    border-radius: 50%;
+}
+
+.transaction-entry__category-text-egress {
+    font-size: 0.75rem;
+    color: var(--color-red-danger);
+}
+
+.transaction-entry__category-icon-egress {
+    height: 8px;
+    width: 8px;
+    background-color: var(--color-red-danger);
     border-radius: 50%;
 }
 
@@ -254,7 +266,7 @@
     gap: 4rem;
 }
 
-.transaction-entry__transaction-icon::before {
+.transaction-entry__transaction-icon-income::before {
     content: '';
     display: block;
     width: 18px;
@@ -264,6 +276,18 @@
     background-color: var(--color-green);
     mask: var(--asset-income-icon) no-repeat 50% 50%;
     -webkit-mask: var(--asset-income-icon) no-repeat 50% 50%;
+}
+
+.transaction-entry__transaction-icon-outcome::before {
+    content: '';
+    display: block;
+    width: 18px;
+    height: 18px;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+    background-color: var(--color-red-danger);
+    mask: var(--asset-outcome-icon) no-repeat 50% 50%;
+    -webkit-mask: var(--asset-outcome-icon) no-repeat 50% 50%;
 }
 
 .transaction-entry__transaction-amount {

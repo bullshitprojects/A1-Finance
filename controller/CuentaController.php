@@ -112,4 +112,13 @@ class CuentaController
         $data = $sql->fetch();
         echo "$" . number_format(floatval($data['balance']), 2);
     }
+
+    public static function ObtenerCuentaCreada($id)
+    {
+        $conexionBD = Conectar::crearInstancia();
+        $sql = $conexionBD->prepare("SELECT `id_cuenta`FROM `cuenta` WHERE usuario_id_usuario = ? ORDER BY id_cuenta DESC LIMIT 1 ");
+        $sql->execute(array($id));
+        $data = $sql->fetch();
+        return $data['id_cuenta'];
+    }
 }

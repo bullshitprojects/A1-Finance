@@ -27,14 +27,23 @@ foreach ($ltransacion as $t) {
 
     echo "  <div class=\"transaction-entry__category\">";
     echo "      <div class=\"transaction-entry__category-container\">";
-    echo "          <div class=\"transaction-entry__category-icon\"></div>";
-    echo "          <div class=\"transaction-entry__category-text\">$nombre</div>";
+    if ($id_tipo_transaccion == 1) {
+        echo "          <div class=\"transaction-entry__category-icon-entry\"></div>";
+        echo "          <div class=\"transaction-entry__category-text-entry\">$nombre</div>";
+    } else {
+        echo "          <div class=\"transaction-entry__category-icon-egress\"></div>";
+        echo "          <div class=\"transaction-entry__category-text-egress\">$nombre</div>";
+    }
     echo "      </div>";
     echo "  </div>";
 
     echo "  <div class=\"transaction-entry__transaction-details\">";
     echo "      <div class=\"transaction-entry__transaction-icon-container\">";
-    echo "          <div class=\"transaction-entry__transaction-icon\"></div>";
+    if ($id_tipo_transaccion == 1) {
+        echo "          <div class=\"transaction-entry__transaction-icon-income\"></div>";
+    } else {
+        echo "          <div class=\"transaction-entry__transaction-icon-outcome\"></div>";
+    }
     echo "      </div>";
     echo "      <div class=\"transaction-entry__transaction-amount\">";
     echo "          <p>$monto</p>";
