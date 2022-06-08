@@ -210,6 +210,7 @@
     display: flex;
     align-items: center;
     gap: 2rem;
+    width: 45%;
 }
 
 .transaction-entry__date {
