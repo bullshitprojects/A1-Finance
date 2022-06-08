@@ -1,3 +1,6 @@
 
 .DS_Store
 php.ini
+### Composer ###
+composer.phar
+/vendor/
