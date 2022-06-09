@@ -143,23 +143,23 @@ INSERT INTO tipo_cuenta (tipo) VALUES ('CUENTA AHORRO');
 INSERT INTO tipo_cuenta (tipo) VALUES ('CUENTA CORRIENTE');
 
 -- CATEGORY
-INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('COMPRA', 2);
-INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('VENTA', 1);
-INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('SALARIO', 1);
-INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('REEMBOLSO', 1);
-INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('CUPONES', 1);
-INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('INVERSIONES', 1);
-INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('REMESA', 1);
-INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('RETIRO', 1);
-INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('PENSION', 1);
-INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('DEPOSITO', 1);
-INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('SUPERMERCADO', 2);
-INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('ROPA', 2);
-INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('ZAPATOS', 2);
-INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('ELECTRODOMESTICOS', 2);
-INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('TECNOLOGIA', 2);
-INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('SERVICIOS', 2);
-INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('ACCESORIOS', 2);
-INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('FERRETERIA', 2);
-INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('GASOLINA', 2);
-INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('SALDO INICIAL', 2);
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('COMPRA', 2); -- 1
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('VENTA', 1); -- 2
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('SALARIO', 1); -- 3
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('REEMBOLSO', 1); -- 4
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('CUPONES', 1); -- 5
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('INVERSIONES', 1); -- 6
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('REMESA', 1); -- 7
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('RETIRO', 1); -- 8
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('PENSION', 1); -- 9
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('DEPOSITO', 1); -- 10
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('SUPERMERCADO', 2); -- 11
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('ROPA', 2); -- 12
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('ZAPATOS', 2); -- 13
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('ELECTRODOMESTICOS', 2); -- 14
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('TECNOLOGIA', 2); -- 15
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('SERVICIOS', 2); -- 16
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('ACCESORIOS', 2); -- 17
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('FERRETERIA', 2); -- 18
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('GASOLINA', 2); -- 19
+INSERT INTO categoria (nombre, tipo_transaccion_id_tipo_transaccion) VALUES ('SALDO INICIAL', 1); -- 20
