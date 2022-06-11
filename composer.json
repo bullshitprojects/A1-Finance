@@ -1,5 +1,7 @@
 {
     "require": {
-        "knplabs/knp-snappy": "^1.4"
+        "knplabs/knp-snappy": "^1.4",
+        "h4cc/wkhtmltopdf-amd64": "0.12.x",
+        "mpdf/mpdf": "^5.7"
     }
 }
